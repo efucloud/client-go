@@ -22,10 +22,6 @@ package v1alpha1
 // KubeUserLister.
 type KubeUserListerExpansion interface{}
 
-// KubeUserAPIKeyListerExpansion allows custom methods to be added to
-// KubeUserAPIKeyLister.
-type KubeUserAPIKeyListerExpansion interface{}
-
 // UserKubeConfigListerExpansion allows custom methods to be added to
 // UserKubeConfigLister.
 type UserKubeConfigListerExpansion interface{}

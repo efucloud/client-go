@@ -20,8 +20,6 @@ package v1alpha1
 
 type KubeUserExpansion interface{}
 
-type KubeUserAPIKeyExpansion interface{}
-
 type UserKubeConfigExpansion interface{}
 
 type WorkspaceRoleExpansion interface{}

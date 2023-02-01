@@ -32,10 +32,6 @@ func (c *FakeRbacV1alpha1) KubeUsers() v1alpha1.KubeUserInterface {
 	return &FakeKubeUsers{c}
 }
 
-func (c *FakeRbacV1alpha1) KubeUserAPIKeys() v1alpha1.KubeUserAPIKeyInterface {
-	return &FakeKubeUserAPIKeys{c}
-}
-
 func (c *FakeRbacV1alpha1) UserKubeConfigs() v1alpha1.UserKubeConfigInterface {
 	return &FakeUserKubeConfigs{c}
 }

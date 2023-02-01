@@ -26,8 +26,6 @@ import (
 type Interface interface {
 	// KubeUsers returns a KubeUserInformer.
 	KubeUsers() KubeUserInformer
-	// KubeUserAPIKeys returns a KubeUserAPIKeyInformer.
-	KubeUserAPIKeys() KubeUserAPIKeyInformer
 	// UserKubeConfigs returns a UserKubeConfigInformer.
 	UserKubeConfigs() UserKubeConfigInformer
 	// WorkspaceRoles returns a WorkspaceRoleInformer.
@@ -48,11 +46,6 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // KubeUsers returns a KubeUserInformer.
 func (v *version) KubeUsers() KubeUserInformer {
 	return &kubeUserInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
-}
-
-// KubeUserAPIKeys returns a KubeUserAPIKeyInformer.
-func (v *version) KubeUserAPIKeys() KubeUserAPIKeyInformer {
-	return &kubeUserAPIKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // UserKubeConfigs returns a UserKubeConfigInformer.

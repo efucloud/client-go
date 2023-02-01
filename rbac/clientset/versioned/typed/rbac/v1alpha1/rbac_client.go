@@ -29,7 +29,6 @@ import (
 type RbacV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	KubeUsersGetter
-	KubeUserAPIKeysGetter
 	UserKubeConfigsGetter
 	WorkspaceRolesGetter
 }
@@ -41,10 +40,6 @@ type RbacV1alpha1Client struct {
 
 func (c *RbacV1alpha1Client) KubeUsers() KubeUserInterface {
 	return newKubeUsers(c)
-}
-
-func (c *RbacV1alpha1Client) KubeUserAPIKeys() KubeUserAPIKeyInterface {
-	return newKubeUserAPIKeys(c)
 }
 
 func (c *RbacV1alpha1Client) UserKubeConfigs() UserKubeConfigInterface {

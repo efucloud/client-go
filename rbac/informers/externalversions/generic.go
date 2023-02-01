@@ -55,8 +55,6 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	// Group=rbac.efucloud.com, Version=v1alpha1
 	case v1alpha1.SchemeGroupVersion.WithResource("kubeusers"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Rbac().V1alpha1().KubeUsers().Informer()}, nil
-	case v1alpha1.SchemeGroupVersion.WithResource("kubeuserapikeys"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Rbac().V1alpha1().KubeUserAPIKeys().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("userkubeconfigs"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Rbac().V1alpha1().UserKubeConfigs().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("workspaceroles"):
