@@ -29,7 +29,6 @@ import (
 type ClusterV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	ClustersGetter
-	ClusterConfigsGetter
 	ClusterProfilesGetter
 	DeployTemplatesGetter
 	WorkspacesGetter
@@ -43,10 +42,6 @@ type ClusterV1alpha1Client struct {
 
 func (c *ClusterV1alpha1Client) Clusters() ClusterInterface {
 	return newClusters(c)
-}
-
-func (c *ClusterV1alpha1Client) ClusterConfigs() ClusterConfigInterface {
-	return newClusterConfigs(c)
 }
 
 func (c *ClusterV1alpha1Client) ClusterProfiles() ClusterProfileInterface {

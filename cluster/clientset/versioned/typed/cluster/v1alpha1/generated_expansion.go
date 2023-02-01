@@ -20,8 +20,6 @@ package v1alpha1
 
 type ClusterExpansion interface{}
 
-type ClusterConfigExpansion interface{}
-
 type ClusterProfileExpansion interface{}
 
 type DeployTemplateExpansion interface{}

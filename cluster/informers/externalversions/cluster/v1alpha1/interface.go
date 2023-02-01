@@ -26,8 +26,6 @@ import (
 type Interface interface {
 	// Clusters returns a ClusterInformer.
 	Clusters() ClusterInformer
-	// ClusterConfigs returns a ClusterConfigInformer.
-	ClusterConfigs() ClusterConfigInformer
 	// ClusterProfiles returns a ClusterProfileInformer.
 	ClusterProfiles() ClusterProfileInformer
 	// DeployTemplates returns a DeployTemplateInformer.
@@ -52,11 +50,6 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // Clusters returns a ClusterInformer.
 func (v *version) Clusters() ClusterInformer {
 	return &clusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
-}
-
-// ClusterConfigs returns a ClusterConfigInformer.
-func (v *version) ClusterConfigs() ClusterConfigInformer {
-	return &clusterConfigInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // ClusterProfiles returns a ClusterProfileInformer.

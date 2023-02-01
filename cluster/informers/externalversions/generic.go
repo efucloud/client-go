@@ -55,8 +55,6 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	// Group=cluster.efucloud.com, Version=v1alpha1
 	case v1alpha1.SchemeGroupVersion.WithResource("clusters"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cluster().V1alpha1().Clusters().Informer()}, nil
-	case v1alpha1.SchemeGroupVersion.WithResource("clusterconfigs"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Cluster().V1alpha1().ClusterConfigs().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("clusterprofiles"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cluster().V1alpha1().ClusterProfiles().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("deploytemplates"):

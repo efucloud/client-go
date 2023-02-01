@@ -32,10 +32,6 @@ func (c *FakeClusterV1alpha1) Clusters() v1alpha1.ClusterInterface {
 	return &FakeClusters{c}
 }
 
-func (c *FakeClusterV1alpha1) ClusterConfigs() v1alpha1.ClusterConfigInterface {
-	return &FakeClusterConfigs{c}
-}
-
 func (c *FakeClusterV1alpha1) ClusterProfiles() v1alpha1.ClusterProfileInterface {
 	return &FakeClusterProfiles{c}
 }
