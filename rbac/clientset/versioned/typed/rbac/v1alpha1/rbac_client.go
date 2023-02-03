@@ -30,6 +30,7 @@ type RbacV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	KubeUsersGetter
 	UserKubeConfigsGetter
+	WorkspaceGroupsGetter
 	WorkspaceRolesGetter
 }
 
@@ -44,6 +45,10 @@ func (c *RbacV1alpha1Client) KubeUsers() KubeUserInterface {
 
 func (c *RbacV1alpha1Client) UserKubeConfigs() UserKubeConfigInterface {
 	return newUserKubeConfigs(c)
+}
+
+func (c *RbacV1alpha1Client) WorkspaceGroups() WorkspaceGroupInterface {
+	return newWorkspaceGroups(c)
 }
 
 func (c *RbacV1alpha1Client) WorkspaceRoles() WorkspaceRoleInterface {

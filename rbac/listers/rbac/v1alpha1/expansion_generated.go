@@ -26,6 +26,10 @@ type KubeUserListerExpansion interface{}
 // UserKubeConfigLister.
 type UserKubeConfigListerExpansion interface{}
 
+// WorkspaceGroupListerExpansion allows custom methods to be added to
+// WorkspaceGroupLister.
+type WorkspaceGroupListerExpansion interface{}
+
 // WorkspaceRoleListerExpansion allows custom methods to be added to
 // WorkspaceRoleLister.
 type WorkspaceRoleListerExpansion interface{}

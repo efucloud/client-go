@@ -22,4 +22,6 @@ type KubeUserExpansion interface{}
 
 type UserKubeConfigExpansion interface{}
 
+type WorkspaceGroupExpansion interface{}
+
 type WorkspaceRoleExpansion interface{}

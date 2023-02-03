@@ -28,6 +28,8 @@ type Interface interface {
 	KubeUsers() KubeUserInformer
 	// UserKubeConfigs returns a UserKubeConfigInformer.
 	UserKubeConfigs() UserKubeConfigInformer
+	// WorkspaceGroups returns a WorkspaceGroupInformer.
+	WorkspaceGroups() WorkspaceGroupInformer
 	// WorkspaceRoles returns a WorkspaceRoleInformer.
 	WorkspaceRoles() WorkspaceRoleInformer
 }
@@ -51,6 +53,11 @@ func (v *version) KubeUsers() KubeUserInformer {
 // UserKubeConfigs returns a UserKubeConfigInformer.
 func (v *version) UserKubeConfigs() UserKubeConfigInformer {
 	return &userKubeConfigInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// WorkspaceGroups returns a WorkspaceGroupInformer.
+func (v *version) WorkspaceGroups() WorkspaceGroupInformer {
+	return &workspaceGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // WorkspaceRoles returns a WorkspaceRoleInformer.

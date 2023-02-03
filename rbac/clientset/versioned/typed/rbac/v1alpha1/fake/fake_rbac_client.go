@@ -36,6 +36,10 @@ func (c *FakeRbacV1alpha1) UserKubeConfigs() v1alpha1.UserKubeConfigInterface {
 	return &FakeUserKubeConfigs{c}
 }
 
+func (c *FakeRbacV1alpha1) WorkspaceGroups() v1alpha1.WorkspaceGroupInterface {
+	return &FakeWorkspaceGroups{c}
+}
+
 func (c *FakeRbacV1alpha1) WorkspaceRoles() v1alpha1.WorkspaceRoleInterface {
 	return &FakeWorkspaceRoles{c}
 }

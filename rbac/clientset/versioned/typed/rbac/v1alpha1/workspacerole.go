@@ -40,6 +40,7 @@ type WorkspaceRolesGetter interface {
 type WorkspaceRoleInterface interface {
 	Create(ctx context.Context, workspaceRole *v1alpha1.WorkspaceRole, opts v1.CreateOptions) (*v1alpha1.WorkspaceRole, error)
 	Update(ctx context.Context, workspaceRole *v1alpha1.WorkspaceRole, opts v1.UpdateOptions) (*v1alpha1.WorkspaceRole, error)
+	UpdateStatus(ctx context.Context, workspaceRole *v1alpha1.WorkspaceRole, opts v1.UpdateOptions) (*v1alpha1.WorkspaceRole, error)
 	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
 	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
 	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.WorkspaceRole, error)
@@ -121,6 +122,21 @@ func (c *workspaceRoles) Update(ctx context.Context, workspaceRole *v1alpha1.Wor
 	err = c.client.Put().
 		Resource("workspaceroles").
 		Name(workspaceRole.Name).
+		VersionedParams(&opts, scheme.ParameterCodec).
+		Body(workspaceRole).
+		Do(ctx).
+		Into(result)
+	return
+}
+
+// UpdateStatus was generated because the type contains a Status member.
+// Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
+func (c *workspaceRoles) UpdateStatus(ctx context.Context, workspaceRole *v1alpha1.WorkspaceRole, opts v1.UpdateOptions) (result *v1alpha1.WorkspaceRole, err error) {
+	result = &v1alpha1.WorkspaceRole{}
+	err = c.client.Put().
+		Resource("workspaceroles").
+		Name(workspaceRole.Name).
+		SubResource("status").
 		VersionedParams(&opts, scheme.ParameterCodec).
 		Body(workspaceRole).
 		Do(ctx).
