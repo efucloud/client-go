@@ -28,12 +28,12 @@ type Interface interface {
 	Clusters() ClusterInformer
 	// ClusterProfiles returns a ClusterProfileInformer.
 	ClusterProfiles() ClusterProfileInformer
+	// ClusterWorkspaces returns a ClusterWorkspaceInformer.
+	ClusterWorkspaces() ClusterWorkspaceInformer
 	// DeployTemplates returns a DeployTemplateInformer.
 	DeployTemplates() DeployTemplateInformer
 	// Workspaces returns a WorkspaceInformer.
 	Workspaces() WorkspaceInformer
-	// WorkspaceResourceQuotas returns a WorkspaceResourceQuotaInformer.
-	WorkspaceResourceQuotas() WorkspaceResourceQuotaInformer
 }
 
 type version struct {
@@ -57,6 +57,11 @@ func (v *version) ClusterProfiles() ClusterProfileInformer {
 	return &clusterProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
+// ClusterWorkspaces returns a ClusterWorkspaceInformer.
+func (v *version) ClusterWorkspaces() ClusterWorkspaceInformer {
+	return &clusterWorkspaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
 // DeployTemplates returns a DeployTemplateInformer.
 func (v *version) DeployTemplates() DeployTemplateInformer {
 	return &deployTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
@@ -65,9 +70,4 @@ func (v *version) DeployTemplates() DeployTemplateInformer {
 // Workspaces returns a WorkspaceInformer.
 func (v *version) Workspaces() WorkspaceInformer {
 	return &workspaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
-}
-
-// WorkspaceResourceQuotas returns a WorkspaceResourceQuotaInformer.
-func (v *version) WorkspaceResourceQuotas() WorkspaceResourceQuotaInformer {
-	return &workspaceResourceQuotaInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }

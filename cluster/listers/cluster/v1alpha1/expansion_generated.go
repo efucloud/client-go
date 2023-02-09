@@ -26,6 +26,10 @@ type ClusterListerExpansion interface{}
 // ClusterProfileLister.
 type ClusterProfileListerExpansion interface{}
 
+// ClusterWorkspaceListerExpansion allows custom methods to be added to
+// ClusterWorkspaceLister.
+type ClusterWorkspaceListerExpansion interface{}
+
 // DeployTemplateListerExpansion allows custom methods to be added to
 // DeployTemplateLister.
 type DeployTemplateListerExpansion interface{}
@@ -33,7 +37,3 @@ type DeployTemplateListerExpansion interface{}
 // WorkspaceListerExpansion allows custom methods to be added to
 // WorkspaceLister.
 type WorkspaceListerExpansion interface{}
-
-// WorkspaceResourceQuotaListerExpansion allows custom methods to be added to
-// WorkspaceResourceQuotaLister.
-type WorkspaceResourceQuotaListerExpansion interface{}

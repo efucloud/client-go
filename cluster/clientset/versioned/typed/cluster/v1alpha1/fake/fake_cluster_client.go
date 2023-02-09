@@ -36,16 +36,16 @@ func (c *FakeClusterV1alpha1) ClusterProfiles() v1alpha1.ClusterProfileInterface
 	return &FakeClusterProfiles{c}
 }
 
+func (c *FakeClusterV1alpha1) ClusterWorkspaces() v1alpha1.ClusterWorkspaceInterface {
+	return &FakeClusterWorkspaces{c}
+}
+
 func (c *FakeClusterV1alpha1) DeployTemplates() v1alpha1.DeployTemplateInterface {
 	return &FakeDeployTemplates{c}
 }
 
 func (c *FakeClusterV1alpha1) Workspaces() v1alpha1.WorkspaceInterface {
 	return &FakeWorkspaces{c}
-}
-
-func (c *FakeClusterV1alpha1) WorkspaceResourceQuotas() v1alpha1.WorkspaceResourceQuotaInterface {
-	return &FakeWorkspaceResourceQuotas{c}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

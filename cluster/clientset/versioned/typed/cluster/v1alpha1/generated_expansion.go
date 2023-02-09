@@ -22,8 +22,8 @@ type ClusterExpansion interface{}
 
 type ClusterProfileExpansion interface{}
 
+type ClusterWorkspaceExpansion interface{}
+
 type DeployTemplateExpansion interface{}
 
 type WorkspaceExpansion interface{}
-
-type WorkspaceResourceQuotaExpansion interface{}

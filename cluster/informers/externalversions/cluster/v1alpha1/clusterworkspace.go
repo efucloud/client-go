@@ -32,58 +32,58 @@ import (
 	cache "k8s.io/client-go/tools/cache"
 )
 
-// WorkspaceResourceQuotaInformer provides access to a shared informer and lister for
-// WorkspaceResourceQuotas.
-type WorkspaceResourceQuotaInformer interface {
+// ClusterWorkspaceInformer provides access to a shared informer and lister for
+// ClusterWorkspaces.
+type ClusterWorkspaceInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.WorkspaceResourceQuotaLister
+	Lister() v1alpha1.ClusterWorkspaceLister
 }
 
-type workspaceResourceQuotaInformer struct {
+type clusterWorkspaceInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 }
 
-// NewWorkspaceResourceQuotaInformer constructs a new informer for WorkspaceResourceQuota type.
+// NewClusterWorkspaceInformer constructs a new informer for ClusterWorkspace type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewWorkspaceResourceQuotaInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredWorkspaceResourceQuotaInformer(client, resyncPeriod, indexers, nil)
+func NewClusterWorkspaceInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredClusterWorkspaceInformer(client, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredWorkspaceResourceQuotaInformer constructs a new informer for WorkspaceResourceQuota type.
+// NewFilteredClusterWorkspaceInformer constructs a new informer for ClusterWorkspace type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredWorkspaceResourceQuotaInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredClusterWorkspaceInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ClusterV1alpha1().WorkspaceResourceQuotas().List(context.TODO(), options)
+				return client.ClusterV1alpha1().ClusterWorkspaces().List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ClusterV1alpha1().WorkspaceResourceQuotas().Watch(context.TODO(), options)
+				return client.ClusterV1alpha1().ClusterWorkspaces().Watch(context.TODO(), options)
 			},
 		},
-		&clusterv1alpha1.WorkspaceResourceQuota{},
+		&clusterv1alpha1.ClusterWorkspace{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *workspaceResourceQuotaInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredWorkspaceResourceQuotaInformer(client, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *clusterWorkspaceInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredClusterWorkspaceInformer(client, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *workspaceResourceQuotaInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&clusterv1alpha1.WorkspaceResourceQuota{}, f.defaultInformer)
+func (f *clusterWorkspaceInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&clusterv1alpha1.ClusterWorkspace{}, f.defaultInformer)
 }
 
-func (f *workspaceResourceQuotaInformer) Lister() v1alpha1.WorkspaceResourceQuotaLister {
-	return v1alpha1.NewWorkspaceResourceQuotaLister(f.Informer().GetIndexer())
+func (f *clusterWorkspaceInformer) Lister() v1alpha1.ClusterWorkspaceLister {
+	return v1alpha1.NewClusterWorkspaceLister(f.Informer().GetIndexer())
 }

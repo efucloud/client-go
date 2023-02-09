@@ -30,9 +30,9 @@ type ClusterV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	ClustersGetter
 	ClusterProfilesGetter
+	ClusterWorkspacesGetter
 	DeployTemplatesGetter
 	WorkspacesGetter
-	WorkspaceResourceQuotasGetter
 }
 
 // ClusterV1alpha1Client is used to interact with features provided by the cluster.efucloud.com group.
@@ -48,16 +48,16 @@ func (c *ClusterV1alpha1Client) ClusterProfiles() ClusterProfileInterface {
 	return newClusterProfiles(c)
 }
 
+func (c *ClusterV1alpha1Client) ClusterWorkspaces() ClusterWorkspaceInterface {
+	return newClusterWorkspaces(c)
+}
+
 func (c *ClusterV1alpha1Client) DeployTemplates() DeployTemplateInterface {
 	return newDeployTemplates(c)
 }
 
 func (c *ClusterV1alpha1Client) Workspaces() WorkspaceInterface {
 	return newWorkspaces(c)
-}
-
-func (c *ClusterV1alpha1Client) WorkspaceResourceQuotas() WorkspaceResourceQuotaInterface {
-	return newWorkspaceResourceQuotas(c)
 }
 
 // NewForConfig creates a new ClusterV1alpha1Client for the given config.
